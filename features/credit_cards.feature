@@ -346,7 +346,6 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-481
   Scenario: Tokenization fails luhn test
     When I make a POST request to /cards with the body:
       """
@@ -391,12 +390,11 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-487
   Scenario: CVV does not match
     When I make a POST request to /cards with the body:
       """
         {
-           "number": "4111111111111111",
+           "number": "5112000200000002",
             "expiration_month": 12,
             "expiration_year": 2016,
             "cvv": "200"
@@ -412,12 +410,11 @@ Feature: Credit cards
         }
       """
 
-  @failing @gh-486
   Scenario: CVV is unsupported
     When I make a POST request to /cards with the body:
       """
         {
-          "number": "4111111111111111",
+          "number": "4457000300000007 ",
           "expiration_month": 12,
           "expiration_year": 2016,
           "cvv": "901"
